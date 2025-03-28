@@ -25,9 +25,14 @@ Route::middleware(['auth'])->group(function () {
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth','userMiddleware'])->group(function(){
-    Route::get('dashboard',[UserController::class,'index'])->name('dashboard');
+    
+    
 });
 
 Route::middleware(['auth','adminMiddleware'])->group(function(){
     Route::get('user',[AdminController::class,'index'])->name('user');
+    Route::get('dashboard',[UserController::class,'index'])->name('dashboard');
+    Route::view('posts', 'admin.posts')
+    ->middleware(['auth', 'verified'])
+    ->name('posts');
 });
