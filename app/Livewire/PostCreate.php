@@ -7,6 +7,8 @@ use App\Models\Post;
 use Flux;
 use Livewire\WithFileUploads;
 use Spatie\PdfToText\Pdf;
+use OpenAI;
+use App\Models\Candidate;
 class PostCreate extends Component
 {
     use WithFileUploads;
