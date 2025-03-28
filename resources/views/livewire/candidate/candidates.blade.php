@@ -1,6 +1,6 @@
 <div>
     <flux:modal.trigger name="create-post">
-    <flux:button class="cursor-pointer">Create post</flux:button>
+    <flux:button class="cursor-pointer">Create cadidate</flux:button>
     </flux:modal.trigger>
 
     <livewire:post-create/>
