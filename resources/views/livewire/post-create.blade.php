@@ -7,7 +7,7 @@
         </div>
 
         <flux:input wire:model="title" label="Title" placeholder="Your title" />
-
+        <flux:input type="file" wire:model="file_path" label="File"/>
         <flux:textarea wire:model="body" label="Body" placeholder="Your body" />
 
         <div class="flex">
