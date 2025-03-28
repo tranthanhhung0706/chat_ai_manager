@@ -33,30 +33,30 @@
           <thead class="">
             <tr>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Body</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File url</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
               
             </tr>
           </thead>
           <tbody class=" divide-y divide-gray-200">
-            @foreach ($posts as $post )
+            @foreach ($candidates as $candidate )
                 
             
               <tr class="">
-                <td class="px-4 py-3 text-sm text-gray-700">{{ $post->id }}</td>
-                <td class="px-4 py-3 text-sm text-gray-700">{{ $post->name }}</td>
-                <td class="px-4 py-3 text-sm text-gray-700">{{ $post->email }}</td>
-                <td class="px-4 py-3 text-sm text-gray-700">
-                  @if ($post->cv_file)
-                      <a href="{{ Storage::url($post->cv_file) }}" target="_blank">View PDF</a>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->id }}</td>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->name }}</td>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->email }}</td>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">
+                  @if ($candidate->cv_file)
+                      <a href="{{ Storage::url($candidate->cv_file) }}" target="_blank">View PDF</a>
                   @endif
 
               </td>
-                <td class="px-4 py-3 text-sm text-gray-700">
-                    <flux:button variant="primary" size="sm" wire:click="edit({{$post->id}})" class="cursor-pointer">Edit</flux:button>
-                    <flux:button variant="danger" size="sm" wire:click="delete({{$post->id}})" class="cursor-pointer">Delete</flux:button>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">
+                    <flux:button variant="primary" size="sm" wire:click="edit({{$candidate->id}})" class="cursor-pointer">Edit</flux:button>
+                    <flux:button variant="danger" size="sm" wire:click="delete({{$candidate->id}})" class="cursor-pointer">Delete</flux:button>
                 </td>
               </tr>
               @endforeach

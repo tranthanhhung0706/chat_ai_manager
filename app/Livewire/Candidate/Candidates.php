@@ -9,11 +9,11 @@ use Flux;
 class Candidates extends Component
 {
 
-    public $posts,$postId;
+    public $candidates,$candidateId;
 
     public function mount()
     {
-        $this->posts=Candidate::all();
+        $this->candidates=Candidate::all();
     }
     public function render()
     {

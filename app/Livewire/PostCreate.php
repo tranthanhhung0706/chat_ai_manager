@@ -84,7 +84,6 @@ class PostCreate extends Component
         $jsonOutput = $response['choices'][0]['message']['content'];
 
         $datacandicate = json_decode($jsonOutput, true);
-        //dd($datacandicate);
         Candidate::create([
             'name' => $datacandicate['name'] ?? null,
             'email' => $datacandicate['email'] ?? null,
