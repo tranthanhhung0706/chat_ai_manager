@@ -29,8 +29,8 @@
     </div>
     </flux:modal>
     <div class="overflow-x-auto mt-4">
-        <table class="min-w-full divide-y divide-gray-200 border border-gray-300 rounded-lg">
-          <thead class="bg-gray-100">
+        <table class="min-w-full divide-y divide-gray-200 border border-gray-500 rounded-lg">
+          <thead class="bg-gray-500">
             <tr>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
@@ -39,11 +39,11 @@
               
             </tr>
           </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
+          <tbody class="bg-black divide-y divide-gray-200">
             @foreach ($posts as $post )
                 
             
-              <tr class="hover:bg-gray-50">
+              <tr class="hover:bg-gray-500">
                 <td class="px-4 py-3 text-sm text-gray-700">{{ $post->id }}</td>
                 <td class="px-4 py-3 text-sm text-gray-700">{{ $post->title }}</td>
                 <td class="px-4 py-3 text-sm text-gray-700">{{ $post->body }}</td>
