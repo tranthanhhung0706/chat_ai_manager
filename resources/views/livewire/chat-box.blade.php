@@ -1,5 +1,6 @@
 <div>
-    <div class="flex flex-col p-4 border rounded shadow">
+    
+    <div class="flex flex-col p-4 border rounded shadow" style="width: 700px;">
         <div class="h-64 overflow-y-auto border-b mb-4">
             @foreach($messages as $message)
                 <div class="p-2 @if($message['role'] == 'user') text-right @else text-left @endif">
