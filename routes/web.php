@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\PDFController;
+
+
+Route::get('/pdf',[PDFController::class,"index"]);
+Route::post('/pdf',[PDFController::class,"store"])->name("pdf.store");
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
