@@ -19,4 +19,9 @@ class Candidates extends Component
     {
         return view('livewire.candidate.candidates');
     }
+
+    public function show($id)
+    {
+        $this->dispatch("showCandidate",$id);
+    }
 }
