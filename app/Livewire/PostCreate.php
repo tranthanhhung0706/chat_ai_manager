@@ -92,7 +92,7 @@ class PostCreate extends Component
             'gpa' => $datacandicate['gpa'] ?? null,
             'skills' => json_encode($datacandicate['skills'] ?? []),
             'experience' => json_encode($datacandicate['experience'] ?? []),
-            'education' => json_encode($datacandicate['education'] ?? []),
+            'education' => json_encode($datacandicate['education']['degree'] ?? []),
             'cv_file' => $this->file_path->store('files','public'),
         ]);
         $path = $this->file_path->store('files', 'public');

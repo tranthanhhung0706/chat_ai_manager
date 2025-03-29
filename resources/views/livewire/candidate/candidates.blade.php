@@ -35,6 +35,10 @@
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">GPA</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Education</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File url</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
               
@@ -48,6 +52,10 @@
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->id }}</td>
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->name }}</td>
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->email }}</td>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->phone }}</td>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->age }}</td>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->gpa }}</td>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->education }}</td>
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">
                   @if ($candidate->cv_file)
                       <a href="{{ Storage::url($candidate->cv_file) }}" target="_blank">View PDF</a>
