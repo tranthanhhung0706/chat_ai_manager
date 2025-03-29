@@ -1,11 +1,11 @@
 <div>
     <flux:modal.trigger name="create-post">
-    <flux:button class="cursor-pointer">Create cadidate</flux:button>
+    {{-- <flux:button class="cursor-pointer">Create cadidate</flux:button> --}}
     </flux:modal.trigger>
 
-    <livewire:post-create/>
-    <livewire:post-edit/>
-    
+    {{-- <livewire:post-create/>
+    <livewire:post-edit/> --}}
+    <livewire:candidate.candidate-details>
     <flux:modal name="delete-post" class="min-w-[22rem]">
     <div class="space-y-6">
         <div>
@@ -38,7 +38,6 @@
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">GPA</th>
-              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Education</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File url</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
               
@@ -55,7 +54,6 @@
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->phone }}</td>
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->age }}</td>
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->gpa }}</td>
-                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $candidate->education }}</td>
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">
                   @if ($candidate->cv_file)
                       <a href="{{ Storage::url($candidate->cv_file) }}" target="_blank">View PDF</a>
@@ -63,8 +61,9 @@
 
               </td>
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">
-                    <flux:button variant="primary" size="sm" wire:click="edit({{$candidate->id}})" class="cursor-pointer">Edit</flux:button>
-                    <flux:button variant="danger" size="sm" wire:click="delete({{$candidate->id}})" class="cursor-pointer">Delete</flux:button>
+                  <flux:button variant="primary" icon="ellipsis-horizontal" size="xs" wire:click="show({{$candidate->id}})" class="cursor-pointer"></flux:button>
+                    {{-- <flux:button variant="primary" icon="pencil" size="xs" wire:click="edit({{$candidate->id}})" class="cursor-pointer"></flux:button>
+                    <flux:button variant="danger" icon="trash" size="xs" wire:click="delete({{$candidate->id}})" class="cursor-pointer"></flux:button> --}}
                 </td>
               </tr>
               @endforeach
