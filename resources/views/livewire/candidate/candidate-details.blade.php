@@ -4,7 +4,7 @@
     <flux:modal name="details-candidate" class="md:w-156">
         
      <div class="space-y-6">
-        <div class="max-w-8xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+        <div class="max-w-8xl mx-auto p-6  rounded-lg shadow-lg">
             
             <!-- Personal Information -->
             <div class="mb-4">
@@ -65,16 +65,6 @@
                 @endif
             </div>
             
-            <!-- Education -->
-            {{-- <div class="mb-4">
-                <h3 class="text-xl font-semibold">Education</h3>
-                @foreach(json_decode($candidate->education, true) as $edu)
-                    <p><strong>{{ $edu['degree'] }}</strong> - {{ $edu['institution'] }} (GPA: {{ $edu['gpa'] ?? 'N/A' }})</p>
-                @endforeach
-            </div>   --}}
-        
-            <!-- Back Button -->
-            {{-- <flux:button wire:click="goBack" variant="secondary">Back</flux:button> --}}
         </div>
         
     </div> 
