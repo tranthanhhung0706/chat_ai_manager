@@ -16,9 +16,7 @@ class PDFController extends Controller
             'file'=>'required|mimes:pdf|max:2048'
         ]);
         $file=$request->file('file');
-        $text= (new Pdf())
-        ->setPdf($text)
-        ->text();
+        $text= "test";
         return back()->with(['text'=>$text]);
     }
 }
