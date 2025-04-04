@@ -92,10 +92,11 @@ class PostCreate extends Component
             'gpa' => $datacandicate['gpa'] ?? null,
             'skills' => json_encode($datacandicate['skills'] ?? []),
             'experience' => json_encode($datacandicate['experience'] ?? []),
-            'education' => json_encode($datacandicate['education']['degree'] ?? []),
-            'cv_file' => $this->file_path->store('files','public'),
+            'education' => json_encode($datacandicate['education'] ?? []),
+            'cv_file' => $this->file_path->store('files','s3'),
         ]);
-        $path = $this->file_path->store('files', 'public');
+        // $path = $this->file_path->store('files', 'public');
+        $path = $this->file_path->store('files', 's3');
         Post::create([
             "title"=>$this->title,
             "body"=>$this->body,
