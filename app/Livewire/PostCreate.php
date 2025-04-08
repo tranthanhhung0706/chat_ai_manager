@@ -97,14 +97,13 @@ class PostCreate extends Component
             'cv_file' => $this->file_path->store('files','public'),
         ]);
         $path = $this->file_path->store('files', 'public');
-        $response_test = Http::get('https://test-api-flask.onrender.com/greet');
-        
+
         Post::create([
             "title"=>$this->title,
             "body"=>$this->body,
             "file_path"=>$path
         ]);
-        dd($response_test);
+
         $this->resetForm();
         Flux::modal('create-post')->close();
         $this->dispatch("reloadPosts");
