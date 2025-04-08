@@ -9,6 +9,7 @@ use Livewire\WithFileUploads;
 use Spatie\PdfToText\Pdf;
 use OpenAI;
 use App\Models\Candidate;
+use Illuminate\Support\Facades\Http;
 class PostCreate extends Component
 {
     use WithFileUploads;
