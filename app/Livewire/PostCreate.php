@@ -85,17 +85,17 @@ class PostCreate extends Component
         $jsonOutput = $response['choices'][0]['message']['content'];
 
         $datacandicate = json_decode($jsonOutput, true);
-        Candidate::create([
-            'name' => $datacandicate['name'] ?? null,
-            'email' => $datacandicate['email'] ?? null,
-            'phone' => $datacandicate['phone'] ?? null,
-            'age'=>$datacandicate['age'] ?? null,
-            'gpa' => $datacandicate['gpa'] ?? null,
-            'skills' => json_encode($datacandicate['skills'] ?? []),
-            'experience' => json_encode($datacandicate['experience'] ?? []),
-            'education' => json_encode($datacandicate['education']['degree'] ?? []),
-            'cv_file' => $this->file_path->store('files','public'),
-        ]);
+        // Candidate::create([
+        //     'name' => $datacandicate['name'] ?? null,
+        //     'email' => $datacandicate['email'] ?? null,
+        //     'phone' => $datacandicate['phone'] ?? null,
+        //     'age'=>$datacandicate['age'] ?? null,
+        //     'gpa' => $datacandicate['gpa'] ?? null,
+        //     'skills' => json_encode($datacandicate['skills'] ?? []),
+        //     'experience' => json_encode($datacandicate['experience'] ?? []),
+        //     'education' => json_encode($datacandicate['education']['degree'] ?? []),
+        //     'cv_file' => $this->file_path->store('files','public'),
+        // ]);
         $path = $this->file_path->store('files', 'public');
 
         Post::create([

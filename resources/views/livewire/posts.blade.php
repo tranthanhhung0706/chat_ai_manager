@@ -48,12 +48,12 @@
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $post->id }}</td>
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $post->title }}</td>
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $post->body }}</td>
-                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">
+                {{-- <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">
                   @if ($post->file_path)
                       <a href="{{ Storage::url($post->file_path) }}" target="_blank">View PDF</a>
                   @endif
 
-              </td>
+              </td> --}}
                 <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">
                     <flux:button variant="primary" size="sm" wire:click="edit({{$post->id}})" class="cursor-pointer">Edit</flux:button>
                     <flux:button variant="danger" size="sm" wire:click="delete({{$post->id}})" class="cursor-pointer">Delete</flux:button>
