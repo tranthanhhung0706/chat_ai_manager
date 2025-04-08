@@ -5,8 +5,15 @@ use Livewire\Volt\Volt;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\OpenAIStreamAssitantsController;
+use App\Http\Controllers\ChatController;
 
+Route::post('/chat/stream', [ChatController::class, 'streamChat']);
 
+Route::get('/streamassitant-chat', [OpenAIStreamAssitantsController::class, 'streamChat']);
+Route::get('/chat-stream-assitant', function () {
+    return view('chat-stream-assitant'); 
+});
 Route::get('/pdf',[PDFController::class,"index"]);
 Route::post('/pdf',[PDFController::class,"store"])->name("pdf.store");
 Route::get('/', function () {
