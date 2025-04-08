@@ -85,6 +85,7 @@ class PostCreate extends Component
         $jsonOutput = $response['choices'][0]['message']['content'];
 
         $datacandicate = json_decode($jsonOutput, true);
+        $path = $this->file_path->store('files', 'public');
         Candidate::create([
             'name' => $datacandicate['name'] ?? null,
             'email' => $datacandicate['email'] ?? null,
@@ -94,10 +95,10 @@ class PostCreate extends Component
             'skills' => json_encode($datacandicate['skills'] ?? []),
             'experience' => json_encode($datacandicate['experience'] ?? []),
             'education' => json_encode($datacandicate['education'] ?? []),
-            'cv_file' => $this->file_path->store('files','public'),
+            'cv_file' => $path,
         ]);
         #$path = $this->file_path->store('uploads', 's3');
-        $path = $this->file_path->store('files', 'public');
+        
         Post::create([
             "title"=>$this->title,
             "body"=>$this->body,
