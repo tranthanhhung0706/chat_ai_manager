@@ -72,7 +72,7 @@ class PostCreate extends Component
 
         $file=$this->file_path;
         $pdfToTextPath = 'C:\Users\ADMIN\Downloads\Compressed\Release-24.08.0-0\poppler-24.08.0\Library\bin\pdftotext.exe';
-        dd($file);
+        
         $text = Pdf::getText($file->getPathname());
         $response = $client->chat()->create([
             'model' => 'gpt-3.5-turbo',
@@ -85,19 +85,19 @@ class PostCreate extends Component
         $jsonOutput = $response['choices'][0]['message']['content'];
 
         $datacandicate = json_decode($jsonOutput, true);
-        // Candidate::create([
-        //     'name' => $datacandicate['name'] ?? null,
-        //     'email' => $datacandicate['email'] ?? null,
-        //     'phone' => $datacandicate['phone'] ?? null,
-        //     'age'=>$datacandicate['age'] ?? null,
-        //     'gpa' => $datacandicate['gpa'] ?? null,
-        //     'skills' => json_encode($datacandicate['skills'] ?? []),
-        //     'experience' => json_encode($datacandicate['experience'] ?? []),
-        //     'education' => json_encode($datacandicate['education']['degree'] ?? []),
-        //     'cv_file' => $this->file_path->store('files','public'),
-        // ]);
-        #$path = $this->file_path->store('files', 'public');
-          $path="test";
+        Candidate::create([
+            'name' => $datacandicate['name'] ?? null,
+            'email' => $datacandicate['email'] ?? null,
+            'phone' => $datacandicate['phone'] ?? null,
+            'age'=>$datacandicate['age'] ?? null,
+            'gpa' => $datacandicate['gpa'] ?? null,
+            'skills' => json_encode($datacandicate['skills'] ?? []),
+            'experience' => json_encode($datacandicate['experience'] ?? []),
+            'education' => json_encode($datacandicate['education']['degree'] ?? []),
+            'cv_file' => $this->file_path->store('files','public'),
+        ]);
+        $path = $this->file_path->store('files', 'public');
+
         Post::create([
             "title"=>$this->title,
             "body"=>$this->body,
