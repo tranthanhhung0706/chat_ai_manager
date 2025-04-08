@@ -28,7 +28,7 @@ class PostCreate extends Component
         
  
         $text = Pdf::getText($file->getPathname());
-        dd($text);
+        
         $path = $this->file_path->store('files', 'public');
         Post::create([
             "title"=>$this->title,
