@@ -9,6 +9,7 @@ use Livewire\WithFileUploads;
 use Spatie\PdfToText\Pdf;
 use OpenAI;
 use App\Models\Candidate;
+use Illuminate\Support\Facades\Storage;
 class PostCreate extends Component
 {
     use WithFileUploads;
@@ -92,9 +93,10 @@ class PostCreate extends Component
             'gpa' => $datacandicate['gpa'] ?? null,
             'skills' => json_encode($datacandicate['skills'] ?? []),
             'experience' => json_encode($datacandicate['experience'] ?? []),
-            'education' => json_encode($datacandicate['education']['degree'] ?? []),
+            'education' => json_encode($datacandicate['education'] ?? []),
             'cv_file' => $this->file_path->store('files','public'),
         ]);
+        #$path = $this->file_path->store('uploads', 's3');
         $path = $this->file_path->store('files', 'public');
         Post::create([
             "title"=>$this->title,
