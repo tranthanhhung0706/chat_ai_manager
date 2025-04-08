@@ -72,7 +72,7 @@ class PostCreate extends Component
 
         $file=$this->file_path;
         $pdfToTextPath = 'C:\Users\ADMIN\Downloads\Compressed\Release-24.08.0-0\poppler-24.08.0\Library\bin\pdftotext.exe';
-        
+        dd($file);
         $text = Pdf::getText($file->getPathname());
         $response = $client->chat()->create([
             'model' => 'gpt-3.5-turbo',
