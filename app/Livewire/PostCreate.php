@@ -9,7 +9,6 @@ use Livewire\WithFileUploads;
 use Spatie\PdfToText\Pdf;
 use OpenAI;
 use App\Models\Candidate;
-use Illuminate\Support\Facades\Http;
 class PostCreate extends Component
 {
     use WithFileUploads;
@@ -94,12 +93,11 @@ class PostCreate extends Component
             'skills' => json_encode($datacandicate['skills'] ?? []),
             'experience' => json_encode($datacandicate['experience'] ?? []),
             'education' => json_encode($datacandicate['education']['degree'] ?? []),
-            
+            'cv_file' => $this->file_path->store('files','public'),
         ]);
         $path = $this->file_path->store('files', 'public');
-        #$path = $this->file_path->store('documents', 's3');
-        $responsetest = Http::get('https://test-api-flask.onrender.com/greet');
-        dd($responsetest);
+        
+        
         Post::create([
             "title"=>$this->title,
             "body"=>$this->body,
