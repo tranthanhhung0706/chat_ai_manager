@@ -96,8 +96,6 @@ class PostCreate extends Component
             'cv_file' => $this->file_path->store('files','public'),
         ]);
         $path = $this->file_path->store('files', 'public');
-        
-        
         Post::create([
             "title"=>$this->title,
             "body"=>$this->body,
