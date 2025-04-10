@@ -9,6 +9,10 @@ use Livewire\WithFileUploads;
 use Spatie\PdfToText\Pdf;
 use OpenAI;
 use App\Models\Candidate;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\Http;
+>>>>>>> 747c17d9e3890ab6b466bfa51c992cb382153170
 class PostCreate extends Component
 {
     use WithFileUploads;
@@ -73,8 +77,34 @@ class PostCreate extends Component
         $pdfToTextPath = 'C:\Users\ADMIN\Downloads\Compressed\Release-24.08.0-0\poppler-24.08.0\Library\bin\pdftotext.exe';
         
         $text = Pdf::getText($file->getPathname());
+<<<<<<< HEAD
         
+=======
+        $response = $client->chat()->create([
+            'model' => 'gpt-3.5-turbo',
+            'messages' => [
+                ["role" => "system", "content" => "Extract the following contact and professional information as JSON following the given schema: " . json_encode($schema)],
+            ["role" => "user", "content" => "Convert this text into JSON format:\n\n" . $text]
+            ],
+            'response_format' => ['type' => 'json_object'],
+          ]);
+        $jsonOutput = $response['choices'][0]['message']['content'];
+
+        $datacandicate = json_decode($jsonOutput, true);
+        Candidate::create([
+            'name' => $datacandicate['name'] ?? null,
+            'email' => $datacandicate['email'] ?? null,
+            'phone' => $datacandicate['phone'] ?? null,
+            'age'=>$datacandicate['age'] ?? null,
+            'gpa' => $datacandicate['gpa'] ?? null,
+            'skills' => json_encode($datacandicate['skills'] ?? []),
+            'experience' => json_encode($datacandicate['experience'] ?? []),
+            'education' => json_encode($datacandicate['education']['degree'] ?? []),
+            'cv_file' => $this->file_path->store('files','public'),
+        ]);
+>>>>>>> 747c17d9e3890ab6b466bfa51c992cb382153170
         $path = $this->file_path->store('files', 'public');
+
         Post::create([
             "title"=>$this->title,
             "body"=>$this->body,
