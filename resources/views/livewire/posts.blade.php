@@ -1,6 +1,6 @@
 <div>
     <flux:modal.trigger name="create-post">
-    <flux:button class="cursor-pointer">Create post</flux:button>
+    <flux:button class="cursor-pointer">Create document</flux:button>
     </flux:modal.trigger>
 
     <livewire:post-create/>
@@ -9,10 +9,10 @@
     <flux:modal name="delete-post" class="min-w-[22rem]">
     <div class="space-y-6">
         <div>
-            <flux:heading size="lg">Delete post?</flux:heading>
+            <flux:heading size="lg">Delete document?</flux:heading>
 
             <flux:subheading>
-                <p>You're about to delete this post.</p>
+                <p>You're about to delete this document.</p>
                 <p>This action cannot be reversed.</p>
             </flux:subheading>
         </div>
@@ -24,7 +24,7 @@
                 <flux:button variant="ghost" class="cursor-pointer">Cancel</flux:button>
             </flux:modal.close>
 
-            <flux:button type="submit" variant="danger" wire:click="destroy()" class="cursor-pointer">Delete post</flux:button>
+            <flux:button type="submit" variant="danger" wire:click="destroy()" class="cursor-pointer">Delete document</flux:button>
         </div>
     </div>
     </flux:modal>
@@ -45,16 +45,16 @@
                 
             
               <tr class="">
-                <td class="px-4 py-3 text-sm text-gray-700">{{ $post->id }}</td>
-                <td class="px-4 py-3 text-sm text-gray-700">{{ $post->title }}</td>
-                <td class="px-4 py-3 text-sm text-gray-700">{{ $post->body }}</td>
-                <td class="px-4 py-3 text-sm text-gray-700">
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $post->id }}</td>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $post->title }}</td>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">{{ $post->body }}</td>
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">
                   @if ($post->file_path)
                       <a href="{{ Storage::url($post->file_path) }}" target="_blank">View PDF</a>
                   @endif
 
               </td>
-                <td class="px-4 py-3 text-sm text-gray-700">
+                <td class="px-4 py-3 text-sm text-gray-700 dark:text-white">
                     <flux:button variant="primary" size="sm" wire:click="edit({{$post->id}})" class="cursor-pointer">Edit</flux:button>
                     <flux:button variant="danger" size="sm" wire:click="delete({{$post->id}})" class="cursor-pointer">Delete</flux:button>
                 </td>
