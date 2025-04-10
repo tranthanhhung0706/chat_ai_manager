@@ -71,40 +71,39 @@ class PostCreate extends Component
         ]);
 
         $file=$this->file_path;
-        $pdfToTextPath = 'C:\Users\ADMIN\Downloads\Compressed\Release-24.08.0-0\poppler-24.08.0\Library\bin\pdftotext.exe';
         
-        $text = Pdf::getText($file->getPathname());
-        $response = $client->chat()->create([
-            'model' => 'gpt-3.5-turbo',
-            'messages' => [
-                ["role" => "system", "content" => "Extract the following contact and professional information as JSON following the given schema: " . json_encode($schema)],
-            ["role" => "user", "content" => "Convert this text into JSON format:\n\n" . $text]
-            ],
-            'response_format' => ['type' => 'json_object'],
-          ]);
-        $jsonOutput = $response['choices'][0]['message']['content'];
+        // $text = Pdf::getText($file->getPathname());
+        // $response = $client->chat()->create([
+        //     'model' => 'gpt-3.5-turbo',
+        //     'messages' => [
+        //         ["role" => "system", "content" => "Extract the following contact and professional information as JSON following the given schema: " . json_encode($schema)],
+        //     ["role" => "user", "content" => "Convert this text into JSON format:\n\n" . $text]
+        //     ],
+        //     'response_format' => ['type' => 'json_object'],
+        //   ]);
+        // $jsonOutput = $response['choices'][0]['message']['content'];
 
-        $datacandicate = json_decode($jsonOutput, true);
+        // $datacandicate = json_decode($jsonOutput, true);
         $path = $this->file_path->store('files', 'public');
-        Candidate::create([
-            'name' => $datacandicate['name'] ?? null,
-            'email' => $datacandicate['email'] ?? null,
-            'phone' => $datacandicate['phone'] ?? null,
-            'age'=>$datacandicate['age'] ?? null,
-            'gpa' => $datacandicate['gpa'] ?? null,
-            'skills' => json_encode($datacandicate['skills'] ?? []),
-            'experience' => json_encode($datacandicate['experience'] ?? []),
-            'education' => json_encode($datacandicate['education'] ?? []),
-            'cv_file' => $path,
-        ]);
+        // Candidate::create([
+        //     'name' => $datacandicate['name'] ?? null,
+        //     'email' => $datacandicate['email'] ?? null,
+        //     'phone' => $datacandicate['phone'] ?? null,
+        //     'age'=>$datacandicate['age'] ?? null,
+        //     'gpa' => $datacandicate['gpa'] ?? null,
+        //     'skills' => json_encode($datacandicate['skills'] ?? []),
+        //     'experience' => json_encode($datacandicate['experience'] ?? []),
+        //     'education' => json_encode($datacandicate['education'] ?? []),
+        //     'cv_file' => $path,
+        // ]);
         #$path = $this->file_path->store('uploads', 's3');
         
-        Post::create([
-            "title"=>$this->title,
-            "body"=>$this->body,
-            "file_path"=>$path
-        ]);
-
+        // Post::create([
+        //     "title"=>$this->title,
+        //     "body"=>$this->body,
+        //     "file_path"=>$path
+        // ]);
+        dd($path);
         $this->resetForm();
         Flux::modal('create-post')->close();
         $this->dispatch("reloadPosts");
